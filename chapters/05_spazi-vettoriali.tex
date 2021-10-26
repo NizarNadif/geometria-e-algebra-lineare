@@ -1,0 +1,95 @@
+\chapter{Spazi vettoriali}
+
+	Uno spazio vettoriale è quella figura algebrica composta da:
+	\begin{enumerate}
+		\item un gruppo commutativo $(V, +)$, i cui elementi sono detti \textit{vettori};
+		\item un campo $\mathbb{K}$;
+		\item una funzione detta \underline{prodotto esterno} (o prodotto di uno scalare per un vettore).
+		$$ f \, : \mathbb{K} \times V \rightarrow V $$
+		$$ 	\qquad \qquad \qquad \quad (k, v) \rightarrow f(k, v) = kv $$
+	\end{enumerate}
+	
+	\section{Proprietà}
+		Tale figura algebrica, per essere considerata uno spazio vettoriale, deve soddisfare le seguenti proprietà:
+		\begin{enumerate}[(1)]
+			\item Proprietà distributiva del prodotto esterno rispetto alla somma di scalari: $ (k_1 + k_2 ) v = k_1v + k_2v $
+			\item Proprietà distributiva del prodotto esterno rispetto alla somma di vettori: $ k(v_1 + v_2) = kv_1 + kv_2 $
+			\item Proprietà associativa del prodotto esterno: $ (k_1 k_2) v = k_1 (k_2v) $
+			\item Esistenza dell'identità rispetto al prodotto esterno: $ 1v = v $
+		\end{enumerate}
+		$ \forall k, k_1, k_2 \in \mathbb{K}, \quad \forall v, v_1, v_2 \in V $
+
+		\paragraph{Esempi}
+		\begin{enumerate}[(1)]
+			\item $ V^2, v^3 $ sono vettori geometrici $ (\mathbb{K} = \mathbb{R}) $
+			\item $ \underset{\text{spazio vettoriale \textbf{reale}}}{\mathbb{R}^n} \quad (\mathbb{K} = \mathbb{R}) $
+			\item $ \underset{\text{spazio vettoriale \textbf{complesso}}}{\mathbb{C}^n} \quad (\mathbb{K} = \mathbb{C}) $
+		\end{enumerate}
+
+	\section{Sottospazi vettoriali}
+		Sia $\mathbb{V}$ uno spazio vettoriale su $\mathbb{K}$.
+		Un sottoinsieme \emph{non vuoto} $ \mathbb{W} \subseteq \mathbb{V} $ viene detto sottospazio vettoriale di $\mathbb{V}$ se è chiuso rispetto alla somma di vettori ed al prodotto esterno, ovvero:
+		\begin{enumerate}[(1)]
+			\item $ w_1 + w_2 \in \mathbb{W} \, , \qquad \forall w_1, w_2 \in \mathbb{W} $
+			\item $ kw \in \mathbb{W} \, , \quad \forall k \in \mathbb{K}, \forall w \in \mathbb{W} $
+		\end{enumerate}
+		Detto ciò è possibile dire che anche $\mathbb{W}$ contiene il vettore nullo $0v$ di $\mathbb{V}$ ed anche $\mathbb{W}$, essendo sottospazio di $\mathbb{V}$, è uno spazio vettoriale sul campo $\mathbb{K}$.
+
+	\section{Dipendenza e indipendenza lineare}
+		\subsection{Combinazione lineare di vettori}
+			La combinazione lineare di \textit{k} vettori $v_1, \dots, v_k \in \mathbb{V} $ con coefficienti $ c_1, \dots, c_2 \in \mathbb{K} $ è il vettore $$ v = \sum_{i=1}^{k} c_i \cdot v_i = c_1v_1 + \dots + c_kv_k \in \mathbb{W} $$
+			
+			\begin{GrayBox}
+				\paragraph{Esempi}
+				\begin{enumerate}
+					\item la terna di numeri reali $(a, b, c) \in \mathbb{R}^3 $ è combinazione lineare dei vettori $(1, 0, 0), (0, 1, 0), (0, 0, 1)$ mediante i coefficienti $a, b, c \in \mathbb{R}$.
+					\item dati i seguenti elementi dello spazio $\mathbb{R}[x]$:
+					$$ p_1(x) = x^2 - x + 1 $$
+					$$ p_2(x) = x^3 + 2 $$
+					e facendo uso dei coefficienti $c_1 = 2 \, , \, c_2 = -1 $, la combinazione lineare che risulta è la seguente:
+					$$ p(x) = 2 \cdot p_1(x) - 1 \cdot p_2(x) = 2x^2 - 2x + 2 - x^3 - 2 = -x^3 + 2x^2 - 2x $$ 
+				\end{enumerate}
+			\end{GrayBox}
+			
+			\paragraph{Osservazione} dato $ \mathbb{W} \subseteq \mathbb{V} $ non vuoto, esso è un sottospazio di $\mathbb{V}$ se e solo se $\mathbb{W}$ contiene tutte le combinazioni lineari ottenute a partire da elementi di $\mathbb{W}$ (e dunque è "chiuso" anche rispetto alla combinazione lineare).
+			
+		\subsection{Vettori dipendenti o indipendenti}
+			Un insieme di vettori $ \{ v_1, \dots, v_2 \} \in \mathbb{V} $ si dice \textbf{linearmente dipendente} se almeno uno di essi è combinazione lineare degli altri; al contrario, si dicono \textbf{linearmente indipendenti} quando il vettore nullo dello spazio può essere scritto come combinazione lineare di tali vettori \underline{solo} c on coefficienti tutti nulli.
+			
+			In sintesi:
+			\begin{enumerate}
+				\item $ c_1v_1 + \dots + c_kv_k = 0 \implies c_1 = c_{\dots} = c_k = 0 $
+				\item se $ v_1, \dots, v_k $ sono linearmente dipendenti:
+					\begin{enumerate}
+						\item $ \implies c_1v_1 + \dots + c_kv_k = 0 $ con $c_i$ \underline{non} tutti nulli;
+						\item $ \implies $ almeno uno di essi è combinazione lineare degli altri:
+						$$ \text{esempio: se } c_1 \neq 0 \, , \, v_1 = - \nicefrac{c_2}{c_1} v_2 - \dots - \nicefrac{c_k}{c_1} v_k $$
+					\end{enumerate}
+			\end{enumerate}
+		
+	\section{Insiemi generatori}
+		\subsection{Sottospazio generato}
+			Sia $S$ un sottoinsieme $v_1, \dots, v_k$ di $\mathbb{V}$. L'insieme di tutte le combinazioni lineari di un numero finito di vettori appartenenti ad $S$ ($\langle S \rangle$) è un sottospazio $\mathbb{W}$ e viene detto \textbf{sottospazio generato}.
+			$$ S = v_1, \dots, v_k \in \mathbb{V} $$
+			$$ \langle S \rangle = \biggl\{ \sum_{i=1}^{k} c_i \cdot v_i \: \vert \: c_i \in \mathbb{K} \biggr\} \neq \emptyset $$
+			$$ W = \langle S \rangle \text{ è un sottospazio generato}$$
+		
+		
+		\subsection{Insieme generatore}
+			Sia $\mathbb{V}$ uno spazio vettoriale su un campo $\mathbb{K}$ e sia $S$ un sottoinsieme di tale spazio. Si dice che $S$ è un \textbf{insieme generatore} di $\mathbb{V}$ se $\mathbb{V} = \langle S \rangle $.
+			
+	\section{Basi e dimensioni di uno spazio vettoriale}
+		Sia $\mathbb{V}$ uno spazio vettoriale su un campo $\mathbb{K}$ e sia $\mathbb{B}$ un insieme di vettori $\{ v_1, \dots, v_k \}$.
+		$\mathbb{B}$ viene detto \textbf{base} di $\mathbb{V}$ se ogni elemento di $\mathbb{V}$ si può scrivere in \underline{\textbf{modo unico}} come combinazione lineare.
+		$$ v = \sum_{i=1}^{n} x_i \cdot v_i \qquad (x_i \in \mathbb{K}) $$
+		
+		\paragraph{Teorema} un insieme $\mathbb{B}$ può essere una base di uno spazio vettoriale se e solo se esso è un insieme generatore linearmente indipendente.
+		\begin{GrayBox}
+			\textbf{Dimostrazione} \newline
+			\textbf{$\implies$} Sia $\mathbb{B}$ una base, esso è anche un generatore; inoltre è possibile affermare che è linearmente indipendente perché la base deve essere sempre unica (leggasi la definizione di base) ed una combinazione lineare dei suoi elementi può essere sicuramente (e solamente, per ciò che è stato denotato in precedenza) nulla se tutti i coefficienti sono nulli (e dunque l'insieme è linearmente indipendente).
+			
+			\textbf{$\impliedby$} Sia $\mathbb{B}$ un insieme generatore $\dots$
+		\end{GrayBox}
+		
+			 
+	
