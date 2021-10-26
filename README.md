@@ -1,2 +1,2 @@
 # geometria-e-algebra-lineare
-Questo repository i miei appunti di geometria e algebra lineare scritti durante il primo semestre all'unitn
+Appunti scritti in LaTeX relativi al corso di "Geometria e algebra lineare" tenuto dal prof. Andrea Perotti.
