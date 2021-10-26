@@ -1,0 +1,272 @@
+\chapter{Sistemi lineari}
+	Data una matrice composta da \textit{m} equazioni lineari in $ x1 ... x_n $
+	$$ \begin{cases}
+		a_{11} x_1 + a_{12} x_2 + ... + a_{1}n x_n = b_1 \\
+		a_{21} x_1 + a_{22} x_2 + ... + a_{2n} x_n = b_2 \\
+		... \\
+		a_{m1} x_1 + a_{m2} x_2 + ... + a_{mn} x_n = b_m
+		\end{cases} = 
+		\underbrace{A}_{m \times n}\underbrace{x}_{n \times 1} = \underbrace{b}_{m \times 1} $$
+		
+		Dove
+		
+		$$ A = [a_{ij} ] \text{ è la matrice dei coefficienti} $$
+		$$ b = \begin{bmatrix}
+			b1 \\
+			... \\
+			b_m
+		\end{bmatrix} \text{ è il vettore dei termini noti} $$
+	 $$ x = \begin{bmatrix}
+	 	x_1 \\
+	 	... \\
+	 	x_m
+	 \end{bmatrix}$$
+	
+	$ \underbrace{(Ab)}_{m \times (n + 1)} $ viene detta \emph{matrice completa} del sistema ed è risultante dalla concatenazione di \textit{A} con \textit{b}.
+	
+	\paragraph{Esempio}
+	\lipsum[2-4]
+	
+	\section{Operazioni elementari sulle righe di (Ab)}
+		\begin{enumerate}[(I)]
+			\item Scambio delle righe \textit{i} e \textit{j}
+			$$ S_{ij}$$
+			\item Moltiplicazione di una riga, la \textit{i}-esima, per uno scalare $ c \neq 0 $
+			$$ D_i(c) $$
+			\item Somma della \textit{i}-esima riga con la \textit{j}-esima riga moltiplicata per \textit{c}
+			$$ E_{ij}(c) $$
+		\end{enumerate}
+		
+		\paragraph{Osservazione}
+		Ognuna delle operazioni è reversibile:  \newline
+		\begin{enumerate}[(I)]
+			\item $ S_{ij}^{-1} = S_{ij} $
+			\item $ D_{i}^{-1}(c) = D_{i}(\nicefrac{1}{c}) $
+			\item $ E_{ij}^{-1}(c) = E_{ij}(-c) $
+		\end{enumerate}
+		
+		\subsection{Matrice equivalente per righe} 
+			Prende il nome di \textbf{matrice equivalente per righe}, rispetto ad una matrice \textit{A}, se è risultante da essa mediante una \emph{successione} di operazioni elementari.
+			
+			Data una matrice $ (Ab) $, le soluzioni di $ Ax = b $ lo sono anche per le sue equivalenti per righe $ A'x = b' $.
+			
+		\subsection{Matrice a scalini}
+			Una matrice \textit{A} viene detta \underline{a scalini} se il numero di zeri che precede il 1° elemento non nullo, detto \textbf{pivot}, aumenta dalla prima all'ultima riga. Questo tipo di matrice è risolubile quando l'ultima colonna (\textit{b} di $(Ab) $ ) non contiene pivot (nel caso contrario avremmo l'uguaglianza falsa $ 0 = b_m $ ).
+		
+		\subsection{Matrice ridotta}
+			Una matrice scalini viene detta \underline{ridotta} quando i suoi pivot sono tutti pari ad 1 e sono gli unici elementi non nulli all'interno della propria colonna.
+			\paragraph{Esempio} 
+			$$
+			\begin{bmatrix}
+			1 & 0 & 0 & 3 \\
+			0 & 1 & 0 & 9 \\
+			0 & 0 & 1 & -2 
+			\end{bmatrix} \implies
+			\begin{cases}
+				x = 3 \\
+				y = 9 \\
+				x = -1
+			\end{cases} \implies \text{Sol}(Ax=b) = {(3, 9. -2)}
+			$$
+	
+	\section{Riduzioni a scala}
+		\paragraph{Teorema} Ogni matrice $ A (m \times n) $ è equivalente per righe ad una matrice a scalini \textit{S}, ridotta.
+		
+		\begin{GrayBox}
+			\subsection{Dimostrazione}
+			\paragraph{I caso}: la $1^a$ colonna \textbf{non} è nulla.
+			Sia $ a_{i1} \neq 0 $, è possibile, non facendo alcuno scambio, supporre che $ a_{11} \neq 0 $ (pivot).
+			Con l'operazione $ E_{i1}(\nicefrac{-a_{i1}}{a_{11}}) \: , \: i \geq 2 $ è possibile annullare tutti gli elementi della $1^a$ colonna al di sotto di $a_{11}$.
+			Si ripete tale procedimento sulla matrice ottenuta togliendo la $1^a$ riga e $1^a$ colonna.
+			
+			\paragraph{II caso}: la prima colonna è nulla, si ripete il precedente procedimento togliendo la prima colonna.
+			
+			La matrice ottenuta è a scalini; è possibile svolgere delle operazioni elementari su di essa per ottenere la matrice a scalini ridotta \textit{S}, tali operazioni sono $ D_i(\nicefrac{1}{p_i}) $, con \textit{p} pivot della \textit{i}-esima riga, e $ E_{ij}(c) $.
+			
+		\end{GrayBox}
+		
+		\subsection{rango di una matrice}
+			Viene detto \emph{rango} (o \emph{caratteristica} di una matrice \textit{A} il numero di pivot in una (qualsiasi) matrice equivalente ad \textit{A}.
+			$$ \underbrace{0}_{ A \, = \, 0 } \leq rg(A) \leq min(m, n) $$
+		
+	\section{Sistema risolubile}
+		un sistema $ Ax = b $ si dice \textbf{risolubile}, o \textbf{compatibile}, quando ogni matrice a scalini ottenuta da $(Ab)$ \underline{non} ha pivot nell'ultima colonna.
+		
+		\begin{align}
+		(Ab) \rightarrow (A'b') & =
+		\begin{bmatrix}
+			0 & \dots & p_1 & \dots & \dots & \dots & * \\
+			0 & \dots & \dots & p_2 & \dots & \dots & * \\
+			0 & \dots & \dots & \dots & \dots & p_r & * \\
+			0 &  &  & \dots &  &  & 0  
+		\end{bmatrix} \notag \\
+		\text{\textbf{oppure} } (A'b') & = 
+		\begin{bmatrix}
+			0 & \dots & p_1 & \dots & \dots & \dots & * \\
+			0 & \dots & \dots & p_2 & \dots & \dots & * \\
+			0 & \dots & \dots & \dots & \dots & \dots & \color{red} p_r \\
+			0 &  &  & \dots &  &  & 0  
+		\end{bmatrix} \notag
+		\end{align}
+		
+		Se il sistema è risolubile, ci sono $n-r$ \underline{variabili libere} (corrispondenti alle colonne non contenenti alcun pivot) e \textit{r} \underline{variabili dipendenti} ($ r = rg (Ab) $).
+		
+		\subsection{Teorema di Ronché - Capelli}
+			\begin{enumerate}[(a)]
+				\item $ Ax = b $ è risolubile 
+				
+				$ \iff rg (Ab) = rg (A) $: nel primo caso, fra quelli precedentemente citati, è \textit{r}, nel secondo è \textit{r - 1}.
+				\item sia $ Ax = b $ risolubile, la soluzione è unica se, e solo se, il suo rango è pari al rango di \textit{A}.
+				
+				Se il rango di \textit{A} è minore (o uguale) al numero delle sue colonne, ci sono infinite soluzioni dipendenti dai $ n - rg(A) $ parametri.
+			\end{enumerate}
+			\paragraph{nullità di una matrice}: è il numero $ n - rg(A) = null(A) $ delle variabili libere di \textit{A}.  
+			
+	\section{Sistemi omogenei}
+		$$ Ax = 0 $$
+		
+		I sistemi omogenei sono:
+		\begin{enumerate}
+			\item sicuramente risolubili perché $ x = 0 $ è sempre una soluzione.
+			\item se $ Ax = 0 $ e $ Ay = 0 $
+			$$ \implies A ( x + y ) = Ax + Ay = 0 + 0 = 0 $$
+			dato lo scalare \textit{c}, $ A(cx) = c \cdot (Ax) = c \cdot 0 = 0 $.
+			\begin{GrayBox}
+				in un piano, la soluzione di un sistema omogeneo è una retta, mentre nello spazio tale soluzione può essere una retta o un piano. In tutti i casi la soluzione deve passare per l'origine.
+			\end{GrayBox}
+		\end{enumerate}
+		
+		\subsection{Relazione con i sistemi non omogenei}
+			Sia $ Ax = b $ risolubile, e sia \textit{y} una soluzione particolare, allora la soluzione del primo sistema può essere vista come la soluzione di un sistema omogeneo $ Ax_0 = 0 $ traslato di \textit{y}.
+			$$ \text{Sol} (Ax = b) = \{ x = y + x_0 \; \vert \; Ax_0 = 0 \} $$ 
+			
+			\begin{GrayBox}
+				\paragraph{Dimostrazione} 
+				$$ Ax = 0 \implies A (y + x_0) = Ay + Ax_0 = b + 0 = b $$
+				$$ Ax = b \implies A ( x - y ) = Ax - Ay = b - b = 0 $$
+				$$ \implies x - y =: x_0 \in \text{Sol} ( Ax = 0 ) $$
+				$$ \iff x = y + x_0 $$ 
+			\end{GrayBox}
+		
+		\subsection{Operazioni elementari come prodotto matriciale}
+			Dato una matrice $ \underset{m \times n}{A} $, l'applicazione di un'operazione elementare su di essa può essere vista come il suo prodotto con una matrice che prende il nome di \textbf{matrice elementare}, le matrici elementari sono le seguenti:
+			\begin{enumerate}[(I)]
+				\item $ S_{ij} \implies \underset{m \times m}{S_{ij}} \cdot \underset{m \times n}{A} $ \newline
+				La matrice $S_{ij}$ è ottenuta da $I_m$ eseguendo lo scambio delle righe \textit{i} e \textit{j}.
+				\begin{GrayBox}
+					\paragraph{Esempio}
+					$$
+					\underset{S_{12}}{\begin{bmatrix}
+						0 & 1 & 0 \\
+						1 & 0 & 0 \\
+						0 & 0 & 1
+					\end{bmatrix}}
+					\cdot \underset{3 \times n}{\begin{bmatrix}
+						A_1 \\
+						A_2 \\
+						A_3
+					\end{bmatrix}} = \begin{bmatrix}
+						A_2 \\
+						A_1 \\
+						A_3
+					\end{bmatrix}
+					$$
+				\end{GrayBox}
+				\item $ D_i(c) \implies D_i(c) \cdot A $ \newline
+				La matrice $D_i(c)$ è ottenuta da $I_m$ moltiplicando la riga \textit{i}-esima per \textit{c}.	
+				\begin{GrayBox}
+					\paragraph{Esempio}
+					$$
+					\underset{\text{matrice diagonale}}{\begin{bmatrix}
+							1 & & \dots & & 0 \\
+							  & \ddots & &  & \\
+							\vdots & & c &  & \vdots  \\
+							  & & &  \ddots &  \\
+							0 & & \dots & & 1
+					\end{bmatrix}}
+					\cdot \underset{3 \times n}{\begin{bmatrix}
+							A_1 \\
+							\vdots \\
+							A_i \\
+							\vdots \\
+							A_m
+					\end{bmatrix}} = \begin{bmatrix}
+						A_1 \\
+						\vdots \\
+						c \cdot A_i \\
+						\vdots \\
+						A_m
+					\end{bmatrix}
+					$$
+				\end{GrayBox}
+				\item $ E_ij(c) \implies E_ij(c) \cdot A $ \newline
+				\begin{GrayBox}
+					\paragraph{Esempio}
+					$$
+					\NiceMatrixOptions{code-for-last-row=\scriptstyle,code-for-last-row=\scriptstyle}
+					\underset{m \times n}{E_{ij}(c)} =\begin{bNiceMatrix}[last-row,last-col=6]
+						1 & & \dots & & 0 & \\
+						  & \ddots & & & & \\
+						0 & \dots & 1 & \dots & c & i \\
+						  & & & \ddots & & \\
+						  0 & & \dots & & 1 & \\
+						  & & i & & j & \\
+					\end{bNiceMatrix} \qquad (\text{con } i \neq j)
+					$$
+				\end{GrayBox}
+			\end{enumerate}	
+			
+			le \underline{matrici elementari}, sono invertibile come le operazioni a loro corrispondenti e con le stesse matrici rappresentate dall'inversa di tali operazioni ($ S_{ij} \, , \, D_i(\nicefrac{1}{c}) \, , \, E_{ij}(-c)$).
+		
+		
+		\subsection{Proposizione} \label{proposizone_sistemi_lineari}
+			Sia \textit{A} ($m \times n$) una matrice con due dimensioni differenti, esiste una matrice quadrata invertibile \textit{P} ($m \times m$) tale che $PA = S$ a scalini.
+			Se \textit{A} fosse una matrice quadrata ($m = n$) ed il suo rango fosse il massimo ($rg(A) = n$), allora la sua versione ridotta sarebbe pari alla matrice identica con la sua stessa dimensione.
+			$$ m = n \wedge rg(A) = n \implies rreff(A) = I_n $$
+			
+			Se il prodotto fra \textit{P} ed \textit{A} fosse uguale alla matrice ridotta associata ad \textit{A}, allora \textit{A} sarebbe invertibile e la sua inversa sarebbe \textit{P}.
+			$$ PA = rreff(A) \implies A^{-1} = P $$
+			
+			\begin{GrayBox}
+				\paragraph{Dimostrazione} se $ E_k \dots E_1 A = S $ a scalini
+				$$ \implies P = E_k \dots E_1 \text{ è invertibile, perché è prodotto di matrici elementari invertibili} $$
+				$$ \implies P^{-1} = E_1^{-1} \dots E_k^{-1} $$
+				Se $m = n$ e il rango di \textit{A} è il massimo, la matrice ridotta associata ad \textit{A} è pari alla matrice identica di dimensione \textit{n}.
+				
+				Dato che $ PA = rreff(A) $ e $ rreff(A) = I_n $, ci è possibile dire che $ PA = I_n $.
+				
+				$$ P^{-1} (PA) = P^{-1} I_n $$
+				$$ A = \underbrace{I_n}_{P \cdot P^{-1}} A = P^{-1} $$
+				$$ \iff AP = P^{-1} P = I_n $$ 
+			\end{GrayBox}
+		
+		\subsection{Teorema}
+			\begin{enumerate}[(a)]
+				\item se $\underset{ n \times n }{A}$ è invertibile $ \implies $ ogni sistema $ Ax = b $ ha una soluzione unica (perché il rango è massimo);
+				\begin{GrayBox}
+					\paragraph{Dimostrazione}
+					\underline{Se} x è soluzione del sistema $(Ax=b)$, possiamo moltiplicare ambo i membri del sistema con l'inversa di \textit{A}. Nel primo membro rimarrà solo il vettore delle incognite, uguale al prodotto fra il vettore dei termini noti e l'inversa di \textit{A};
+					$$ A^{-1} \cdot (Ax) = A^{-1} b \implies x = A^{-1} b $$
+					Sostituendo tale \textit{x} all'interno del sistema $Ax=b$ otteniamo l'identità $b=b$, ovvero una conferma dell'unicità della soluzione.
+					$$ A (A^{-1}b) = b \implies b = b \implies x = A^{-1} b \text{ è l'unica soluzione}$$
+				\end{GrayBox}
+			
+				\item $A (n \times n) $  è invertibile $\iff rg(A) = n $; 
+				\begin{GrayBox}
+					\paragraph{Dimostrazione}
+					Facendo uso della proposizione \ref{proposizone_sistemi_lineari} è possibile dire, per ipotesi, che, quando la matrice \textit{A} è invertibile, il suo rango è massimo; da ciò possiamo aggiungere che vi è un'unica soluzione (punto a). Dato che la matrice ha un'unica soluzione, la sua nullità e nulla ed il rango è massimo: ($ null(A) = n- rg(A) = 0 $).
+				\end{GrayBox}
+			\end{enumerate}
+		
+			Se concatenassimo \textit{A} con la matrice identica avente le sue stesse dimensioni, e moltiplicassimo tale matrice completa $(n \times 2n)$ con l'inversa di \textit{A}, \textit{P}, sarebbe possibile ottenere il rango di \textit{A}.
+			$$ \underset{n \times n}{P} \cdot \underset{n \times 2n}{(A \, I_n)} = rref(A \, I_n) $$
+			
+		\subsection{Studio del rango di una matrice}
+			Data una matrice \textit{A} ($n \times n$), durante lo studio del suo rango si può incorrere in due casi differenti:
+				\paragraph{I caso} ci sono meno di \textit{n} pivot nelle prime \textit{n} colonne: \newline
+				In questo caso è possibile sostenere che, dato $rg(A) < n$, la matrice \textbf{non} è invertibile.
+				$$ rg(A) < n \implies \nexists A^{-1} $$
+				
+				\paragraph{II caso} ci sono \textit{n} pivot nelle prime \textit{n} colonne: \newline
+				Esiste l'inversa della matrice originale.
+				$$ rg(A) = n \implies \exists A^{-1} $$

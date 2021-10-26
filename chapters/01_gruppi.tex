@@ -1,0 +1,48 @@
+\chapter{Gruppi}
+
+Dati i seguenti insiemi:
+$$ \mathbb{N} \subset \mathbb{Z} \subset \mathbb{Q} \subset \mathbb{R} \subset \mathbb{C} $$
+
+Ricordiamo alcune delle seguenti operazioni:
+\begin{itemize}
+	\item $ x = a + b $ non sempre ha soluzioni in $ \mathbb{N} $;
+	\item $a \cdot x = b $ non sempre ha soluzioni in $ \mathbb{N} $ e $ \mathbb{Z} $;
+	\item $ x^2 = 2 $ non ha soluzioni in $ \mathbb{N}, \mathbb{Z}, \mathbb{Q} $;
+\end{itemize}
+
+Infine i numeri complessi, il cui insieme è denotato con $ \mathbb{C} $, permettono di risolvere tutte le equazioni polinomiali.
+
+
+\section{Definizione}
+	Un gruppo è un insieme  $ \mathbb{G} $ su cui è definita un'operazione $ * $ con le seguenti proprietà:
+	\begin{enumerate}
+		\item associativa: $ ( a * b ) * c = a * ( b * c) \quad \forall a, b, c \in \mathbb{G} $;
+		\item esistenza dell'elemento neutro: $ \exists e \in \mathbb{G} | a * e = e * a = a \quad \forall a \in \mathbb{G} $;
+		\item esistenza dell'elemento simmetrico: $ \forall a \in \mathbb{G} \quad \exists a' \in \mathbb{G} | a * a' = a' * a = e $;
+	\end{enumerate}
+	
+	Un gruppo $ (\mathbb{G}, *) $ è \textbf{commutativo} (o \textit{abeliano})
+	$$ se \quad a * b = b * a \quad \forall a, b \in \mathbb{G} $$
+	
+	\subsection{Esempi}
+		\begin{enumerate}
+			\item $ (V^2, +), \quad (V^3, +) $ gruppi commutativi (son gruppi perché rispettano sempre tutte le proprietà);
+			\item $ (\mathbb{N}, +) $ \textbf{non} è un gruppo $ \rightarrow $ non ha elementi simmetrici dato che il suo dominio esclude i numeri negativi;
+			\newline $ (\mathbb{Z}, +) $ è un gruppo;
+			\newline $ (\mathbb{Q}, +), (\mathbb{R}, +), (\mathbb{C}, +) $ sono gruppi commutativi;
+			\item $ (\mathbb{N}, \times) $ \textbf{non} è un gruppo perché non rispetta la proprietà dell'elemento simmetrico con l'elemento 0 (non si può fare $ \frac{1}{0} $);
+			\newline $ (\mathbb{Z}, \times) $ \textbf{non} è un gruppo " ";
+			\newline $ (\mathbb{Q}, \times) $ \textbf{non} è un gruppo " ";
+			\newline $ ( \mathbb{Q}^* = \mathbb{Q} \backslash \{0\}, x) $ è un gruppo;
+			\newline $ ( \mathbb{R}^* = \mathbb{R} \backslash \{0\}, x) $ è un gruppo;
+			\newline $ ( \mathbb{C}^* = \mathbb{C} \backslash \{0\}, x) $ è un gruppo;
+		\end{enumerate}
+
+\section{Campi}
+	$ \mathbb{Q}, \mathbb{R} $ e $ \mathbb{C} $ sono \underline{campi}:
+	\newline un \textit{campo} è un insieme $ \mathbb{K}	 $ con due operazioni + e $ \times $ tali che:
+	\begin{enumerate}
+		\item $ ( \mathbb{K}, +) $ è un gruppo commutativo;
+		\item $ ( \mathbb{K}^* = \mathbb{K} \backslash \{0\}, x) $ è un gruppo commutativo;
+		\item proprietà \textit{distributiva}: $ a \times ( b + c ) = a \times b + a \times c \quad \forall a, b, c \in \mathbb{K} $.
+	\end{enumerate}

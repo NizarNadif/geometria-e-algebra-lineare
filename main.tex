@@ -1,0 +1,31 @@
+\documentclass[12pt, letterpaper]{report}
+
+\input{imports}
+\input{utils}
+
+\begin{document}
+
+\begin{titlepage}
+    \begin{center}
+        \titleUL
+    \end{center}
+\end{titlepage}
+
+\blankpage
+
+%indice
+\pagestyle{indice}
+\pagenumbering{Roman}
+\tableofcontents
+\addtocontents{toc}{\begin{flushright}\textbf{Pagina}\end{flushright}\par}
+\vspace*{75pt}
+\clearpage
+\blankpage
+
+%corpo del testo
+\pagenumbering{arabic}
+\pagestyle{corpo}
+
+\input{chapters/00_chapters}
+
+\end{document}

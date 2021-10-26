@@ -1,0 +1,60 @@
+% modifico i margini della pagina (quelli predefiniti sono 1.5in)
+\usepackage[margin=1.25in]{geometry}
+
+%codificazione del documento
+%codificazione del testo inserito
+\usepackage[utf8]{inputenc}
+%codificazione del testo stampato
+\usepackage[T1]{fontenc}
+
+%scelta della lingua italiana
+\usepackage[italian]{babel}
+
+%libreria utilizzata per includere le immagini
+\usepackage{graphicx}
+%definisco la cartella dalla quale recuperarle
+\graphicspath{{assets/}}
+
+%libreria utilizzata per includere i link
+\usepackage[hidelinks]{hyperref}
+
+%libreria utilizzata per includere i comment
+%/begin{comment} ... /end{comment}
+\usepackage{comment}
+
+%libreria  che ci permette di modificare l'header
+\usepackage{fancyhdr}
+
+%libreria che mi permette di modificare la numerazione nell'indice
+\usepackage{tocloft}
+%faccio in modo che lo stile di pagina di questa libreria non sovrascriva
+%quello fatto da me con la libreria fancyhdr
+\tocloftpagestyle{fancy}
+
+%libreria che rimuove lo spazio all'inizio di ogni paragrafo
+\usepackage[parfill]{parskip}
+
+%libreria che mi permette di accostare un'immagine a del testo
+\usepackage{wrapfig}
+
+%libreria che permette di aggiungere i commenti
+\usepackage{verbatim}
+
+%libreria che include i somboli matematici
+\usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools, nicefrac, nicematrix} % AMS
+
+%libreria per includere le box colorate
+\usepackage[most]{tcolorbox}
+
+%libreria che permette di stampare dei lorem ipsum
+\usepackage{lipsum}
+
+%libreria che permette di modificare gli enumerate
+\usepackage{enumerate}
+
+%libreria che permette di creare assets personalizzati
+\usepackage{tikz, tikz-3dplot}
+\usetikzlibrary{shapes.misc,shadows}
+
+%libreria che permette di modificare lo stile delle titolazioni
+\usepackage[ ]{titlesec}

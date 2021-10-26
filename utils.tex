@@ -1,0 +1,87 @@
+%modifico la numerazione delle sezioni nel toc
+\renewcommand\cftsecaftersnum{.}
+\renewcommand\thechapter{\Roman{chapter}}
+\renewcommand\thesection{\arabic{section}}
+\renewcommand\thesubsection{\roman{subsection}}
+
+\renewcommand\cftchapnumwidth{3em}
+\renewcommand\cftsecnumwidth{3em}
+\renewcommand\cftsubsecindent{3em}
+\renewcommand\cftsubsubsecindent{5.35em}
+
+%comando per stampare una pagina vuota
+\newcommand\blankpage{%
+	\null
+	\thispagestyle{empty}%
+	\addtocounter{page}{-1}%
+	\newpage
+}
+
+%comando per stampare l'area grigia
+\definecolor{block-gray}{gray}{0.9}
+\newtcolorbox{GrayBox}{colback=block-gray,grow to right by=5mm,grow to left by=5mm,
+	boxrule=0pt,boxsep=0pt,breakable}
+
+%comando per stampare la pagina di titolo
+\newcommand*{\titleUL}{\begingroup
+	\begin{center}
+		{\LARGE\textsc{Università degli studi di Trento}} \\
+		\vspace*{0.6in}
+		{\LARGE \includegraphics[width=0.3\textwidth]{unitn-logo-round.png}}
+		\vspace*{0.7in}
+		
+		\rule{\textwidth}{1pt}\par
+		\vspace{0.5\baselineskip}
+		{\huge\bfseries Appunti\\[0.4\baselineskip]
+			\large --- Geometria e algebra lineare ---}\\[0.5\baselineskip]
+		\rule{\textwidth}{1pt}\par
+		\vfill
+		{
+			\large\bfseries Nizar Nadif
+		}\par
+		
+	\end{center}
+	\endgroup}
+
+%%imposto l'intestazione ed il piè di pagina
+\fancypagestyle{indice}{
+	\fancyhead{} %rimuovo il testo di default nell'intestazione
+	\renewcommand{\headrulewidth}{0pt} %rimuovo il delimitatore
+	\setlength{\headheight}{15pt} %altezza dell'intestazione
+	\setlength{\headsep}{0.0in}
+	\chead{
+	}
+}
+
+\fancypagestyle{corpo}{
+	\fancyhf{} %rimuove ogni cosa dall'intestazione ed il piè di pagina
+	\renewcommand{\headrulewidth}{0.4pt}
+	\renewcommand{\footrulewidth}{0.4pt}
+	\setlength{\headheight}{15pt} %altezza dell'intestazione
+	\setlength{\headsep}{0.2in}
+	\rhead{
+		\begin{picture}(0,0)
+			\put(-100,-5){\includegraphics[width=4cm]{unitn-logo-large}} 
+		\end{picture}
+	}
+	
+	\lhead{\nouppercase{\leftmark}}
+	\rfoot{\thepage}
+}
+
+%ridefinisco le pagine iniziali dei capitoli
+\fancypagestyle{plain}{%
+	\fancyhf{} %rimuove ogni cosa dall'intestazione ed il piè di pagina
+	\renewcommand{\headrulewidth}{0pt}
+	\renewcommand{\footrulewidth}{0.4pt}
+	\rfoot{\thepage}
+}
+
+% modifico i titoli
+\titleformat{\chapter}
+[block]
+{\normalfont\huge\bfseries}
+{\thechapter}
+{0pt} %
+{\hspace{20pt}\huge}
+\titlespacing*{\chapter}{-10pt}{-50pt}{20pt} 
