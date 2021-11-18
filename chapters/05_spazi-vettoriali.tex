@@ -79,17 +79,76 @@
 			Sia $\mathbb{V}$ uno spazio vettoriale su un campo $\mathbb{K}$ e sia $S$ un sottoinsieme di tale spazio. Si dice che $S$ è un \textbf{insieme generatore} di $\mathbb{V}$ se $\mathbb{V} = \langle S \rangle $.
 			
 	\section{Basi e dimensioni di uno spazio vettoriale}
-		Sia $\mathbb{V}$ uno spazio vettoriale su un campo $\mathbb{K}$ e sia $\mathbb{B}$ un insieme di vettori $\{ v_1, \dots, v_k \}$.
-		$\mathbb{B}$ viene detto \textbf{base} di $\mathbb{V}$ se ogni elemento di $\mathbb{V}$ si può scrivere in \underline{\textbf{modo unico}} come combinazione lineare.
-		$$ v = \sum_{i=1}^{n} x_i \cdot v_i \qquad (x_i \in \mathbb{K}) $$
-		
-		\paragraph{Teorema} un insieme $\mathbb{B}$ può essere una base di uno spazio vettoriale se e solo se esso è un insieme generatore linearmente indipendente.
-		\begin{GrayBox}
-			\textbf{Dimostrazione} \newline
-			\textbf{$\implies$} Sia $\mathbb{B}$ una base, esso è anche un generatore; inoltre è possibile affermare che è linearmente indipendente perché la base deve essere sempre unica (leggasi la definizione di base) ed una combinazione lineare dei suoi elementi può essere sicuramente (e solamente, per ciò che è stato denotato in precedenza) nulla se tutti i coefficienti sono nulli (e dunque l'insieme è linearmente indipendente).
+		\subsection{Base di uno spazio vettoriale}
+			Sia $\mathbb{V}$ uno spazio vettoriale su un campo $\mathbb{K}$ e sia $\mathbb{B}$ un insieme di vettori $\{ v_1, \dots, v_k \}$.
+			$\mathbb{B}$ viene detto \textbf{base} di $\mathbb{V}$ se ogni elemento di $\mathbb{V}$ si può scrivere in \underline{\textbf{modo unico}} come combinazione lineare.
+			$$ v = \sum_{i=1}^{n} x_i \cdot v_i \qquad (x_i \in \mathbb{K}) $$
 			
-			\textbf{$\impliedby$} Sia $\mathbb{B}$ un insieme generatore $\dots$
-		\end{GrayBox}
+			\paragraph{Teorema} un insieme $\mathbb{B}$ può essere una base di uno spazio vettoriale se e solo se esso è un insieme generatore linearmente indipendente.
+			\begin{GrayBox}
+				\textbf{Dimostrazione} \newline
+				\textbf{$\implies$} Sia $\mathbb{B}$ una base, esso è anche un generatore; inoltre è possibile affermare che è linearmente indipendente perché la base deve essere sempre unica (leggasi la definizione di base) ed una combinazione lineare dei suoi elementi può essere sicuramente (e solamente, per ciò che è stato denotato in precedenza) nulla se tutti i coefficienti sono nulli (e dunque l'insieme è linearmente indipendente).
+				
+				\textbf{$\impliedby$} Sia $\mathbb{B}$ un insieme generatore $\dots$
+			\end{GrayBox}
 		
+		\paragraph{Osservazione} Se $\mathbb{V}$ ha almeno un insieme generatore, egli ha anche una base. Infatti, ogni variabile dipendente di un insieme generatore può essere vista come relazione con la variabile da cui dipende; continuando a sostituire le variabili dipendenti si otterrà un insieme generatore privo di esse, ovvero una base.
+		
+		\subsection{Dimensione di uno spazio vettoriale}
+			Sia $\mathbb{V}$ uno spazio vettoriale con base $\mathbb{B} = \{ v_1, \dots, v_n \}$, \textit{n} è detta \underline{dimensione} di $\mathbb{V}$ ($n = dim \mathbb{V} $).
+			
+			\paragraph{Osservazione} la dimensione di una base senza elementi viene definita essere pari a zero per convenzione, dato che senza questa definizione tale insieme non sarebbe nemmeno una base (0 è linearmente dipendente da ogni scalare).
+		
+		\subsection{Isomorfismo}
+			Data la \textit{n}-upla delle coordinate $T_{\mathbb{B}}$ dei vettori appartenenti allo spazio vettoriale \textit{V} rispetto ad una sua base $\mathbb{B}$, è possibile dire che:
+			\begin{enumerate}
+				\item $T_{\mathbb{B}}$ è biunivoca (iniettiva e suriettiva);
+				\item $T_{\mathbb{B}}$ è \textbf{lineare}:
+				$$T_{\mathbb{B}} (a_1v_1 + a_2v_2) = a_1 T_{\mathbb{B}} (v_1) + a_2 T_{\mathbb{B}} (v_2) \quad \forall a_1, a_2 \in \mathbb{K} \: \forall v_1, v_2 \in \mathbb{V} $$
+			\end{enumerate}
+		
+			\begin{GrayBox}
+				\paragraph{Dimostrazione}
+				\begin{enumerate}
+					\item $T_{\mathbb{B}}$ è invertibile:
+					$$T_{\mathbb{B}} ^ {-1} (x) = \sum_{i=1}^{n} x_i e_i$$
+					\item Sia $v_1 = \sum_{i=1}^{n} x_i e_i \, , \: v_2 = \sum_{i=1}^{n} y_i e_i$
+					$$ a_1 v_1 + a_2 v_2 = a_1 ( \sum_{i=1}^{n} x_i e_i ) + a_2 ( \sum_{i=1}^{n} y_i e_i ) = \sum_{i=1}^{n}(a_1 x_i + a_2 y_i) \, e_i $$
+					$$ \implies T_{\mathbb{B}} (a_1 v_1 + a_2 v_2) = a_1 x + a_2 y = a_1 T_{\mathbb{B}} (v_1) + a_2 T_{\mathbb{B}} (v_2) $$
+				\end{enumerate}
+			\end{GrayBox}
+			$T_{\mathbb{B}}$ si dice \underline{isomorfismo} di spazi vettoriali.
+			
+		\subsection{Proposizione}
+			Siano $v_1, \dots , v_m \in V$.
+			Allora $v_1 \dots v_m$ sono LI / LD / generatori / basi se e solo se le loro coordinate rispetto ad una base di \textit{V} sono tali ($T_{\mathbb{B}} (v_1), \dots T_{\mathbb{B}} (v_m)$ sono LI / LD/ generatori / basi in $\mathbb{K}^n$).
+			
+			\begin{GrayBox}
+				\paragraph{Dimostrazione}
+				Dato il generatore ${v_1, \dots , v_m}$ di \textit{V}, sia $V \in \mathbb{K}^n$, sia $x = T_{\mathbb{B}}^{-1} (x) = \sum_{i=1}^{n} x_i e_i $
+				$$\implies v = \sum_{j=1}^{m} a_j v_j $$
+				$$ x = T_{\mathbb{B}} (v) = T_{\mathbb{B}} (\sum_{j} a_j v_j) = \sum_j a_j T_{\mathbb{B}} (v_j) $$
+				$ \implies T_{\mathbb{B}} (v_1) ... T_{\mathbb{B}} (v_m) $ genera $\mathbb{K}^n$.
+			\end{GrayBox}
 			 
-	
+		\subsection{Teorema della base in V}
+			Due basi di \textit{V} contengono lo stesso numero di elementi.
+			\begin{GrayBox}
+				\paragraph{Dimostrazione}
+				Sia $\mathbb{B} = \{ e_1 , \dots , e_n \}$ una base di \textit{V} $\implies T_{\mathbb{B}} \, : V \implies \mathbb{K}^n$.
+				
+				Sia $\mathbb{C} = \{v_1 , \dots , v_m \}$ base di \textit{V}.
+				
+				$$ \{ T_{\mathbb{B}} (v_1) , \dots , T_{\mathbb{B}} (v_m) \} \text{ è base di } \mathbb{K}^n \implies m = n$$
+			\end{GrayBox}
+		\subsection{Intersezione ed unione di sottospazi}
+			Dato lo spazio vettoriale \textit{V} ed i suoi sottospazi \textit{U} e \textit{W}:
+			\begin{enumerate}
+				\item $U \cap W$ è sottospazio di \textit{V}.
+				$$v_1, v_2 \in U \cap W \implies a_1 v_1 + a_2 v_2 \in U \cap W \quad a_1 , a_2 \in \mathbb{K}$$
+				\item $U \cup W$ \emph{non} è un sottospazio di \textit{V} (in generale).
+			\end{enumerate}
+			\paragraph{Esempio} Dato lo spazio vettoriale $\mathbb{R}^2$ ed i sottospazi $U$ e $W$ (due rette), la loro intersezione è l'origine ed è un sottospazio del piano; la loro unione non è un sottospazio vettoriale del piano perché la somma di due vettori appartenenti ai due sottospazi non appartiene alle due rette (l'unione) ($u + w \notin U \cup W $).
+		\subsection{Formula di Grassman}
+			La formula di Grassman ci dice che la somma delle dimensioni dell'intersezione di due spazi e della loro unione è pari alla somma delle dimensioni dei due sottospazi.
+			$$ dim (U \cap W) + dim (U \cup W) = dim \, U + dim \, W$$	
