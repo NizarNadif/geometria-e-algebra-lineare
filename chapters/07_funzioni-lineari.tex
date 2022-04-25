@@ -1,0 +1,68 @@
+\chapter{Funzioni lineari}
+	Una funzione lineare $T: V \rightarrow V^\prime$ prende come parametro un elemento dello spazio vettoriale $V$ e ne restituisce uno dello spazio vettoriale $V^\prime$ a seguito di determinate elaborazioni descritte dalla funzione stessa.
+	
+	Per esempio, dato una matrice $A_{n \times n}$ ed un campo $\mathbb{K}$:
+	$$T_A : \mathbb{K}^n \rightarrow \mathbb{K}^m \qquad T_A (x) = A x$$
+	
+	Essa è lineare:
+	$$A (a_1 v_1 + a_2 v_2) = a_1 (A v_1) + a_2 (A v_2) \: , \quad \forall a_1, a_2 \in \mathbb{K} \, , v_1, v_2 \in \mathbb{K}^n$$
+	$$\implies T_A (a v_1 + a v_2) = a_1 T_A (v_1) + a_2 T_A (v_2)$$
+	
+	\paragraph{Definizione} Siano $V, V^\prime$ due spazi vettoriali in $\mathbb{K}$, una funzione $T: V \rightarrow V^\prime$ si dice \emph{lineare} se $T_A (a v_1 + a v_2) = a_1 T_A (v_1) + a_2 T_A (v_2) \: , \quad \forall a_1, a_2 \in \mathbb{K} \, , v_1, v_2 \in V$.
+	
+	\begin{GrayBox}
+		\paragraph{Esempi}
+		\begin{enumerate}[(1)]
+			\item $T_B : V \rightarrow \mathbb{K}^n \quad T_B (v) = (x_1 \dots x_n)$
+			\item Data la matrice $A = \begin{bmatrix}
+				-2 & 1 \\
+				0 & 3 \\
+				1 & 5
+			\end{bmatrix}$ e la funzione $T_A : \mathbb{R}^2 \rightarrow \mathbb{R}^3$
+			$$T_A (x, y) = (-2 x + y, 3 y, x + 5 y) $$
+		\end{enumerate}
+	\end{GrayBox}
+
+	\paragraph{Osservazione} $T: V \rightarrow V^\prime$ è lineare se e solo se $T (v_1 + v_2) = T(v_1) + T(v_2)$ e $T(av) = a T (v) \quad \forall v_1, v_2 \in V \, , \forall a \in \mathbb{K}$
+	
+	\section{Immagine di una funzione}
+		Sia $T: V \rightarrow V^\prime$ lineare, la sua \underline{immagine} è 
+		$$\text{Im} (T_A) = \{ v^\prime \in V^\prime \vert \exists v \in V \text{ tale che } T(v) = v^\prime \}$$
+		con $V^\prime$ che rappresenta il \underline{codominio} della funzione.
+	
+	\section{Nucleo di una funzione}
+		Sia $T: V \rightarrow V^\prime$ lineare, il \underline{nucleo} di \textit{T} è
+		$$N(T) = ker (T) = \{ v \in V \vert T(v) = 0 \}$$
+		
+		Il vettore nullo del dominio appartiene al nucleo ed è tale che il suo corrispondente nell'insieme dell'immagine è il vettore nullo del codominio
+		$$0_v \in N(T) \, : \, T(0_v) = T (0v) = 0 T(v) = 0_{v^\prime} \quad v, 0_v \in V \, , \, 0_{v^\prime} \in V^\prime$$
+		
+		\paragraph{Proposizione}
+		$T: V \rightarrow V^\prime$ lineare, è iniettiva $\iff N(T) = {0}$.
+		
+		\begin{GrayBox}
+			\paragraph{Esempio} Data una matrice $A_{m \times n}$, il nucleo della sua funzione associata è composto dalle soluzioni del sistema omogeneo $A x = 0$ 
+			\begin{equation*}
+				\begin{split}
+					N(T(A)) &= \{ x \in \mathbb{K}^n \vert Ax = 0 \} \\
+					&= Sol (Ax = 0)
+				\end{split}
+			\end{equation*}
+			ed è un sottospazio vettoriale di $\mathbb{K}^n$ e la dimensione è pari alla nullità della matrice
+			$$\dim N(T_A) = null (A) = n - rg A$$
+		\end{GrayBox}
+		
+		\paragraph{Proposizione}
+		Sia $T: V \rightarrow V^\prime$ lineare,
+		$N(T(A))$ e $Im(A)$ sono sottospazi vettoriali, rispettivamente di $V$ e $V^\prime$.
+		
+		\paragraph{Osservazione} Se  $T: V \rightarrow V^\prime$  è lineare ed invertibile, la sua inversa  $T^{-1}: V^\prime \rightarrow V$ è a sua volta lineare.
+	\section{Matrici associate}
+		Sia $T: V \rightarrow V^\prime$ lineare e siano $\mathbb{B} = \{ u_1, \dots, u_n \}$ e $\mathbb{C} = \{ v_1, \dots, v_m \}$ basi di $V$ e $V^\prime$ rispettivamente. Siano $T_\mathbb{B}: V \rightarrow \mathbb{K}^n$ e $T_\mathbb{C}: V^\prime \rightarrow \mathbb{K}^m$ gli isomorfismi ottenuti associando ad ogni vettore le sue coordinate rispetto alla base.
+		
+		La matrice $A=[A_{ij}]$ è detta \underline{matrice associata} a T rispetto alle basi $\mathbb{B}$ e $\mathbb{C}$
+		$$A = M_\mathbb{B}^\mathbb{C} (T)$$
+		
+		\paragraph{Notazione} Se $V = V^\prime$ e $\mathbb{B} = \mathbb{C}$, la matrice si può rappresentare come $A = M_\mathbb{B} (T)$.
+		
+		Se le due basi sono uguali agli spazi delle n-uple che li contengono e le basi sono le basi canoniche di tali spazi ($V=\mathbb{K}^n \, , V^\prime=\mathbb{K}^m \, , \mathbb{B}=\mathcal{E}_n \, , \mathbb{C}=\mathcal{E}_m$), la matrice si può rappresentare come $A = M(T)$.
